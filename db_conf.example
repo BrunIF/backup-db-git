@@ -1,0 +1,10 @@
+# Configuration file
+# Change Your data
+user="root"
+password="pass"
+dbname="test"
+storepath="./db"
+
+# Path to Your remote repository
+#repository_path="https://bitbucket.org/repo/path.git"
+
