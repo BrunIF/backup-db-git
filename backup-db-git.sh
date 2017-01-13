@@ -13,7 +13,7 @@ git_init () {
 
 # Create first commit when directory created
 git_first_commit() {
-  echo 'Backup database ```' $dbname '``` \n' > README.md
+  echo 'Backup database ```' $dbname '```' > README.md
   git add README.md 
   git commit -m "First commit created with BackUp Database with Git support
 More info https://github.com/BrunIF/backup-db-git
@@ -26,11 +26,12 @@ Created by Igor Bronovskyi 2017"
 git_commit() {
   # Add dump and commit
   git add ${dbname}.sql
-  git commit -m $date_now 
+  _info=$(date_now)
+  git commit -m "$_info"
   # Add description to README file and commit
   echo $(date_now) 'created new backup for database ```'$dbname'``` Hash: ```'$(git rev-parse HEAD)'```'  >> README.md
-  git add README.md 
-  git commit -m "Previes backup: $(git rev-parse HEAD)"
+  git add README.md
+  git commit -m "Previes backup: $(git rev-parse HEAD)" 
 } 
 
 # Function return current date and time
@@ -41,7 +42,14 @@ date_now() {
 
 # Create mysqdump
 mysql_backup_db() {
-  mysqldump -u$user -p$password $dbname > ./${dbname}.sql
+
+  # If password in .mi.cfg file
+#  mysqldump --defaults-file=/storage/backup/backup-db-git/.my.cfg -u$user $dbname > ./$dbname.sql
+  # normal dump
+#  mysqldump -u$user -p$password $dbname > ./$dbname.sql
+  # agressive mode
+  mysqldump --skip-comments -u$user -p$password $dbname > ./$dbname.sql
+
 }
 
 create_directory() {
@@ -84,11 +92,14 @@ create_dump_git() {
 
 if [ -d "$storepath" ]; then
 
+  # Create dump
   create_dump_git
 
 else
 
+  # Create directory and after dump
   create_directory
+  create_dump_git
 
 fi
 

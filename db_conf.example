@@ -1,10 +1,15 @@
 # Configuration file
 # Change Your data
+
+# Change on your database user 
 user="root"
+# If password have special charset you need escape the character
 password="pass"
+# Enter DB name
 dbname="test"
+# Path where you whant store your dumps
 storepath="./db"
 
 # Path to Your remote repository
-#repository_path="https://bitbucket.org/repo/path.git"
+repository_path="https://bitbucket.org/repo/path.git"
 

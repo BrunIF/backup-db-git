@@ -8,5 +8,5 @@ Backup database dump with Git control
 - [x] Create commit with understandable comment
 - [ ] Push to remote server(s)
 - [x] Write log file
-- [ ] Text on server
+- [x] Test on server
 
