@@ -4,8 +4,9 @@ Backup database dump with Git control
 
 - [x] Create folder for backup when not exists
 - [x] Make ```git init```
-- [ ] Create SQL dump
-- [ ] Create commit with understandable comment
+- [x] Create SQL dump
+- [x] Create commit with understandable comment
 - [ ] Push to remote server(s)
-- [ ] Write log file
+- [x] Write log file
+- [ ] Text on server
 
